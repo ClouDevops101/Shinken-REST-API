@@ -20,15 +20,15 @@ Documentation
 
 Start / Stop / Restart Shinken from the api : 
 Start : 
-```
+```bash
 curl https://MyAPI:5000/v3/shinken/restart
 ```
 Stop : 
-```
+```bash
 curl https://MyAPI:5000/v3/shinken/stop
 ```
 Restart : 
-```
+```bash
 curl https://MyAPI:5000/v3/shinken/restart
 ```
 ### Common Error : 
@@ -56,7 +56,7 @@ This command will add the host to the shinken configuration and will cleanly rel
 
 ##  ADDING GROUP OF HOST BY IP RANGE
 Adding a group of host to Shinken by an ip range : 
-```
+```bash
      echo '
         {
         "address_range":"10.0.0.1-10.0.0.22",
@@ -75,7 +75,7 @@ This command will add the host to the shinken configuration and will cleanly rel
 
 ##  ADDING GROUP OF HOST BY RANGE
 Adding a group of host to Shinken by a host range : 
-```
+```bash
     curl https://MyAPI:5000/v3/hosts/search/HDP
 ```
 This command will add the groupe of host Hadopspark19[702-711]v-int to the shinken as follow : 
@@ -93,7 +93,7 @@ Hadopspark19711v-int
 ## SEARCHING HOST
 
 Adding a group of host to Shinken by an ip range : 
-```
+```bash
   curl https://MyAPI:5000/v3/hosts/search/HDP
 ```
 This command will seek host from the shinken configuration and will display the result in a nesty json
@@ -105,11 +105,11 @@ This command will seek host from the shinken configuration and will display the 
 ## DELETE HOST(S) /!\
 
 This feature is propably the most dangerous one, please make sure you're realy want to remove a bunch of host configuration from the shinken /!\ !!! /!\ : 
-```
+```bash
   curl https://MyAPI:5000/v3/hosts/deletematch/HDP
 ```
 This command will seek hosts from the shinken configuration and will try to remove the host if the search match more than one host than you need to force the command by doing this command /!\ : 
-```
+```bash
   curl https://MyAPI:5000/v3/hosts/deletematch/HDP/force
 ```
 
