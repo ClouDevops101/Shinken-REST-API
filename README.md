@@ -15,22 +15,41 @@ The configuration is inside the python script :
 
 Requierements
 ================
-aws_region
-stream_name
-record_delimiter
+Probably a shinken installation would be benefit 
+then install requirements :
 ```
-config = dict(
-    aws_region='eu-west-3',
-    buffer_size_limit=100000,
-    buffer_time_limit=0.2,
-    kinesis_concurrency=1,
-    kinesis_max_retries=10,
-    record_delimiter='\n',
-    stream_name='recomender',
-    )
+pip install -r requirements.txt 
 ```
-Handbrake.sh
+Documentation
 =============
+Start / Stop / Restart Shinken from the api : 
+Start : 
+```
+curl https://MyAPI:5000/v3/shinken/restart
+```
+Stop : 
+```
+curl https://MyAPI:5000/v3/shinken/stop
+```
+Restart : 
+```
+curl https://MyAPI:5000/v3/shinken/restart
+```
+Adding a host to Shinken : 
+```
+     echo '
+        {
+        "host_name":"Host to monitor",
+        "address":"10.0.0.1",
+        "contact_groups":"DevOps",
+        "hostgroups":"WebApp",
+        "_SSH_KEY":"rsa_webapp_.pub",
+        "_SSH_USER":"admin"
+        }
+        ' | curl -d @- https://MyAPI:5000/v3/hosts
+```
+This command will add the host to the shinken configuration and will cleanly reload the shinken-arbiter responsble for handeling configuration
+
 
 Handbrank.sh Command line interface for compressing mkv and avi video file to m4v/aac AppleTv and  iOS video format and
   send task notification to a phone over SMS
