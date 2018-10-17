@@ -35,7 +35,7 @@ Restart :
 ```
 curl https://MyAPI:5000/v3/shinken/restart
 ```
-###Commonn Error : 
+### Commonn Error : 
 'id' : 'SHNK-002' (See error table)
 
 ## ADDING HOST
@@ -90,7 +90,7 @@ Hadopspark19711v-int
  
  And will cleanly reload the shinken-arbiter responsble for handeling configuration
 
-###Commonn Error : 
+### Commonn Error : 
 'id' : 'SHNK-004' (See error table)
 
 ## SEARCHING HOST
