@@ -99,10 +99,27 @@ Adding a group of host to Shinken by an ip range :
 ```
   curl https://MyAPI:5000/v3/hosts/search/HDP
 ```
-This command will seek host to the shinken configuration and will cleanly reload the shinken-arbiter responsble for handeling configuration
+This command will seek host from the shinken configuration and will display the result in a nesty json
 
 #### Commonn Error : 
 'id' : 'SHNK-004' (See error table)
+
+
+## DELETE HOST(S) /!\
+
+This feature is propably the most dangerous one, please make sure you're realy want to remove a bunch of host configuration from the shinken /!\ !!! /!\ : 
+```
+  curl https://MyAPI:5000/v3/hosts/deletematch/HDP
+```
+This command will seek hosts from the shinken configuration and will try to remove the host if the search match more than one host than you need to force the command by doing this command /!\ : 
+```
+  curl https://MyAPI:5000/v3/hosts/deletematch/HDP/force
+```
+
+
+#### Commonn Error : 
+'id' : 'SHNK-004' (See error table)
+
 
 ERROR TABLE : 
 =============
