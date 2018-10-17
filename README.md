@@ -36,7 +36,7 @@ curl https://MyAPI:5000/v3/shinken/restart
 
 ## ADDING HOST
 Adding a host to Shinken : 
-```
+```bash
      echo '
         {
         "use":"Web",
