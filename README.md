@@ -74,8 +74,9 @@ Adding a group of host to Shinken by an ip range :
 ```
 This command will add the host to the shinken configuration and will cleanly reload the shinken-arbiter responsble for handeling configuration
 
-#### Commonn Error : 
+### Commonn Error : 
 'id' : 'SHNK-004' (See error table)
+
 
 Adding a group of host to Shinken by a host range : 
 ```
@@ -101,7 +102,7 @@ Adding a group of host to Shinken by an ip range :
 ```
 This command will seek host from the shinken configuration and will display the result in a nesty json
 
-#### Commonn Error : 
+### Commonn Error : 
 'id' : 'SHNK-004' (See error table)
 
 
@@ -123,12 +124,13 @@ This command will seek hosts from the shinken configuration and will try to remo
 
 ERROR TABLE : 
 =============
-```
-'id' : 'SHNK-001', 'Message' : 'Missing requeried field : Please note that "use" and "host_name" and "address" are mandatory '
-'id' : 'SHNK-002', 'Message' : 'Unknow Action please use : /v3/shinken/Action = [start | restart | stop ]'
-'id' : 'SHNK-003', 'Message' : 'Value can not be empty or a space'
-'id' : 'SHNK-004', 'Message' : 'Unknown range format'
-'id' : 'SHNK-005', 'Message' : 'No host is matching the ' + ip 
-'id' : 'SHNK-006', 'Message' : 'HOST unreachable through ssh'
-```
+| CODE          | Message  |
+|:-------------:| -----:|
+| SHNK-001     | Missing requeried field : Please note that "use" and "host_name" and "address" are mandatory  |
+|SHNK-002     | Unknow Action please use : /v3/shinken/Action = [start | restart | stop ]      |  
+| SHNK-003 | Value can not be empty or a space   |  
+| SHNK-004 | Unknown range format  |
+|SHNK-005 | No host is matching the ' + ip  |
+|SHNK-006|HOST unreachable through ssh|
+
 
