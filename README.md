@@ -5,11 +5,7 @@
 
 
 
-Description : a python script to push event to kinesis
-
-HOW It WORKS
-================
-The configuration is inside the python script : 
+Description : Shinken is a nagios fork written in Python Made in France
 
 Requierements
 ================
