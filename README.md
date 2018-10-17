@@ -35,7 +35,7 @@ Restart :
 ```
 curl https://MyAPI:5000/v3/shinken/restart
 ```
-### Commonn Error : 
+### Common Error : 
 'id' : 'SHNK-002' (See error table)
 
 ## ADDING HOST
@@ -55,10 +55,10 @@ Adding a host to Shinken :
 ```
 This command will add the host to the shinken configuration and will cleanly reload the shinken-arbiter responsble for handeling configuration
 
-### Commonn Error : 
+### Common Error : 
 'id' : 'SHNK-001' (See error table)
 
-
+##  ADDING GROUP OF HOST BY IP RANGE
 Adding a group of host to Shinken by an ip range : 
 ```
      echo '
@@ -74,10 +74,10 @@ Adding a group of host to Shinken by an ip range :
 ```
 This command will add the host to the shinken configuration and will cleanly reload the shinken-arbiter responsble for handeling configuration
 
-### Commonn Error : 
+### Common Error : 
 'id' : 'SHNK-004' (See error table)
 
-
+##  ADDING GROUP OF HOST BY RANGE
 Adding a group of host to Shinken by a host range : 
 ```
     curl https://MyAPI:5000/v3/hosts/search/HDP
@@ -91,7 +91,7 @@ Hadopspark19711v-int
  
  And will cleanly reload the shinken-arbiter responsble for handeling configuration
 
-### Commonn Error : 
+### Common Error : 
 'id' : 'SHNK-004' (See error table)
 
 ## SEARCHING HOST
@@ -102,7 +102,7 @@ Adding a group of host to Shinken by an ip range :
 ```
 This command will seek host from the shinken configuration and will display the result in a nesty json
 
-### Commonn Error : 
+### Common Error : 
 'id' : 'SHNK-004' (See error table)
 
 
@@ -118,7 +118,7 @@ This command will seek hosts from the shinken configuration and will try to remo
 ```
 
 
-#### Commonn Error : 
+#### Common Error : 
 'id' : 'SHNK-004' (See error table)
 
 
