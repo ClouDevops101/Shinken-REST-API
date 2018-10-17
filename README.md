@@ -20,6 +20,8 @@ pip install -r requirements.txt
 ```
 Documentation
 =============
+## STOP'N'START
+
 Start / Stop / Restart Shinken from the api : 
 Start : 
 ```
@@ -36,6 +38,7 @@ curl https://MyAPI:5000/v3/shinken/restart
 ###Commonn Error : 
 'id' : 'SHNK-002' (See error table)
 
+## ADDING HOST
 Adding a host to Shinken : 
 ```
      echo '
@@ -71,9 +74,35 @@ Adding a group of host to Shinken by an ip range :
 ```
 This command will add the host to the shinken configuration and will cleanly reload the shinken-arbiter responsble for handeling configuration
 
+#### Commonn Error : 
+'id' : 'SHNK-004' (See error table)
+
+Adding a group of host to Shinken by a host range : 
+```
+    curl https://MyAPI:5000/v3/hosts/search/HDP
+```
+This command will add the groupe of host Hadopspark19[702-711]v-int to the shinken as follow : 
+Hadopspark19702v-int
+Hadopspark19703v-int
+Hadopspark19704v-int
+...
+Hadopspark19711v-int
+ 
+ And will cleanly reload the shinken-arbiter responsble for handeling configuration
+
 ###Commonn Error : 
 'id' : 'SHNK-004' (See error table)
 
+## SEARCHING HOST
+
+Adding a group of host to Shinken by an ip range : 
+```
+  curl https://MyAPI:5000/v3/hosts/search/HDP
+```
+This command will seek host to the shinken configuration and will cleanly reload the shinken-arbiter responsble for handeling configuration
+
+#### Commonn Error : 
+'id' : 'SHNK-004' (See error table)
 
 ERROR TABLE : 
 =============
