@@ -5,8 +5,6 @@
 
 
 
-
-
 Description : a python script to push event to kinesis
 
 HOW It WORKS
@@ -35,10 +33,14 @@ Restart :
 ```
 curl https://MyAPI:5000/v3/shinken/restart
 ```
+###Commonn Error : 
+'id' : 'SHNK-002' (See error table)
+
 Adding a host to Shinken : 
 ```
      echo '
         {
+        "use":"Web",
         "host_name":"Host to monitor",
         "address":"10.0.0.1",
         "contact_groups":"DevOps",
@@ -50,80 +52,37 @@ Adding a host to Shinken :
 ```
 This command will add the host to the shinken configuration and will cleanly reload the shinken-arbiter responsble for handeling configuration
 
-
-Handbrank.sh Command line interface for compressing mkv and avi video file to m4v/aac AppleTv and  iOS video format and
-  send task notification to a phone over SMS
-
-![HandBrake](Handbrake.png)
+###Commonn Error : 
+'id' : 'SHNK-001' (See error table)
 
 
-Handbrake.sh convert mkv to m4v AppleTv format using HandBrakeCli the most powerfull tools to compresse multiple video format.
-for more information about Handbrake please visite the official web page :
-[ Handbrake website ](https://trac.handbrake.fr/wiki/CLIGuide)
+Adding a group of host to Shinken by an ip range : 
+```
+     echo '
+        {
+        "address_range":"10.0.0.1-10.0.0.22",
+        "contact_groups":"DevOps",
+        "hostgroups":"WebApp",
+        "_SSH_KEY":"rsa_webapp_.pub",
+        "_SSH_USER":"admin"
+        "use":"Web"
+        }
+        ' | curl -d @- https://MyAPI:5000/v3/hostsbyiprl
+```
+This command will add the host to the shinken configuration and will cleanly reload the shinken-arbiter responsble for handeling configuration
 
-This script take 3 argument as input :
-ex :
-
-Handbrake.sh /Volume/video "mkv|avi" 800 yes "06XXXXX"
-
-- the folder to feetch video files
-- the video file format, multiple format (container) could be specified
-- the sleep time (in seconds) between two compression
-- Yes/no deleting source file
-
-Sending
-
-Quality specification :
-
-- Compression using -e x264
-- audio select track -a 1,2
-- Biterate -B 128
-- Quality -q 20
-- Audio format aac -E copy:aac
-- Subtitiles -s 1,2
-
-Versions
---------
-Handbrake.sh 1.0.1
+###Commonn Error : 
+'id' : 'SHNK-004' (See error table)
 
 
-Requirement
-------------
-
-The script use the HandBrakeCLI 64 bite
-You can download it in official Hanbrake web site
-[HandBrakeCLI] (https://handbrake.fr/downloads2.php)
-
-
-Installation
-------------
-
-```bash
-    cp Handbrake.sh /usr/local/bin/ && chmod +x /usr/local/bin/Handbrake.sh
+ERROR TABLE : 
+=============
+```
+'id' : 'SHNK-001', 'Message' : 'Missing requeried field : Please note that "use" and "host_name" and "address" are mandatory '
+'id' : 'SHNK-002', 'Message' : 'Unknow Action please use : /v3/shinken/Action = [start | restart | stop ]'
+'id' : 'SHNK-003', 'Message' : 'Value can not be empty or a space'
+'id' : 'SHNK-004', 'Message' : 'Unknown range format'
+'id' : 'SHNK-005', 'Message' : 'No host is matching the ' + ip 
+'id' : 'SHNK-006', 'Message' : 'HOST unreachable through ssh'
 ```
 
-Just download (Like the way it used to be)
-
-```bash
-    wget -O Handbrake.sh https://raw.githubusercontent.com/LinuxArchitects/HandBrakeCli/master/Handbrake.sh
-    chmod +x Handbrake.sh
-```
-or
-
-```bash
-    curl -Lo Handbrake.sh https://raw.githubusercontent.com/LinuxArchitects/HandBrakeCli/master/Handbrake.sh
-    chmod +x Handbrake.sh
-```
-Usage
------
-
-```bash
-    $      Handbrake.sh /Volume/Video_Folder "mkv|avi"  3600    yes    "Phone number"
-    usage: Handbrake.sh     [Arg1]             [Arg2]   [Arg3] [Arg4]  [Arg5]
-
-    Command line interface for compressing mkv and mp4 video file to m4v/aac Appletv ios video format notification over SMS
-    --------------------------------------------------------------------------
-    https://github.com/LinuxArchitects/HandBrakeCli
-
-
-```
