@@ -52,7 +52,7 @@ Adding a host to Shinken :
 ```
 This command will add the host to the shinken configuration and will cleanly reload the shinken-arbiter responsble for handeling configuration
 
-###Commonn Error : 
+### Commonn Error : 
 'id' : 'SHNK-001' (See error table)
 
 
