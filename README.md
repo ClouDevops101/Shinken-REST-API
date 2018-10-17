@@ -11,7 +11,7 @@ Requierements
 ================
 Probably a shinken installation would be benefit 
 then install requirements :
-```shell
+```bash
 pip install -r requirements.txt 
 ```
 Documentation
