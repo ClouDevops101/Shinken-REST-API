@@ -3,8 +3,6 @@
  [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WX4EKLLLV49WG)
 
 
-
-
 Description : Shinken is a nagios fork written in Python Made in France
 
 Requierements
