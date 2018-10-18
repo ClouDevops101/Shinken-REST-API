@@ -5,7 +5,13 @@
 
 Description : The purpose of this project is to build an intelligent monitoring / supervision  infrastructure  microservice based, able to handle the challenge of adding, plugging ad unplugging microservice and system in a cloud like environment
 
- ![The_Monitoring_Stack_as_a_Microservice](The_Monitoring_Stack_as_a_Microservice.jpg)
+ ![The Monitoring Stack as a Microservice](The_Monitoring_Stack_as_a_Microservice.jpg)
+
+Update 18/10/2018: 
+Updating the pattern by using Kafka as event broker to send event to shinken and elasticsearch and to manage the notification and alert dispatching
+
+ ![Kafka shinken InfluxDB grafana elasticsearch](Kafka_shinken_InfluxDB_grafana_elasticsearch.jpeg)
+
 
 Shinken is a nagios fork written in Python Made in France
 
