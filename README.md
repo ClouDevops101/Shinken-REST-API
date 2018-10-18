@@ -1,11 +1,14 @@
-# Shinken-REST-API
+# The Monitoring Stack as a Microservice
 <a href="http://bitly.com/2grT54q"><img src="https://cdn.codementor.io/badges/i_am_a_codementor_dark.svg" alt="I am a codementor" style="max-width:100%"/></a><a href="http://bitly.com/2grT54q"><img src="http://www.shinken-monitoring.org/img/LogoFrameworkBlack.png" height="50"> 
  [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WX4EKLLLV49WG)
 
 
-Description : Shinken is a nagios fork written in Python Made in France
+Description : The purpose of this project is to build an intelligent monitoring / supervision  infrastructure  microservice based, able to handle the challenge of adding, plugging ad unplugging microservice and system in a cloud like environment
+[![The_Monitoring_Stack_as_a_Microservice](The_Monitoring_Stack_as_a_Microservice.jpg)]
 
-Disclamer : Supervision and monitoring terms are interchangeable in this topic.
+Shinken is a nagios fork written in Python Made in France
+
+'''Disclamer''' : Supervision and monitoring terms are interchangeable in this topic.
 Devs : " Get rid of sending an excel sheet with information to the ops monitoring guy to get your host/service monitored with an assumed margin of humain erreur."
 Ops : "Get rid of adding a bunch of hosts generating alarm that blinks like a christmas tree, caused by montoring ghost hosts that dosen't exit yet or hosts in to be deployed status. "
 Wouldn't be simple to send in time, a JSON request once and notify the whole monitoring system to welcome warmly the fresh new deployed app, or remove magically the old one.
@@ -27,18 +30,21 @@ This simple request is enough to get you straightfroward to desired state :
 Once the rest api get the request, it's able to do the work and the magic happens:
 
 1 - Is this information correct ? :
-
+```json
+{
  "host_name" : "Mesos-Agent007",
  "address" : "10.0.X.X"
 The api is smart enough to quickly decide wether this host could be registred or not by :
-
+```
 Checking if the DNS registry is aware about this host
 Doing a simple ping to check if the host system is Up
 2 - Following the supervision template :
 
 you may notice the first line indicate to the monitoring system to pic the appropriate pattern to use :
-
+```json
+{
 "use" : "linux-ssh",
+```
 We did write a couple of template to cover the common monitoring use cases.
 
 The linux-ssh tells the API that this system is in Agentless mode (Thanks to Shinken (The nagios fork) , so SSH protocole is engouh to monitor, no need to install and configure an NRPE agent or collectD or a telegraph on the target system.
@@ -48,17 +54,11 @@ Here again the system will process to the next level of tests. Testing the ssh c
 3 - Adding the host/service :
 
 If the step 2 succeed, the host is associated with the described group, following the previous example :
-
+```json
+{
 "hostgroups" : "MESOS"﻿
+```
 a monitoring groupe called MESOS will be created (if not exist) and the new host is associated to.
-
-Conclusion : This solution responds to many use case mainly in a on growing environment, wether your looking for monitoring :
-- A big hadoop cluster that keep growing.
-- A set of ephemeral virtual machine, containers used for testing purpose Q&A.
-This solution is for you
-Hope this paper inspire you to improve your existing monitoring platform.
-
-Waiting for your feed back, please leave a comment.
 
 Requierements
 ================
