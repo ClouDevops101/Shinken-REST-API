@@ -35,8 +35,9 @@ Once the rest api get the request, it's able to do the work and the magic happen
 {
  "host_name" : "Mesos-Agent007",
  "address" : "10.0.X.X"
+ ```
 The api is smart enough to quickly decide wether this host could be registred or not by :
-```
+
 Checking if the DNS registry is aware about this host
 Doing a simple ping to check if the host system is Up
 2 - Following the supervision template :
