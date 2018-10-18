@@ -5,6 +5,61 @@
 
 Description : Shinken is a nagios fork written in Python Made in France
 
+Disclamer : Supervision and monitoring terms are interchangeable in this topic.
+Devs : " Get rid of sending an excel sheet with information to the ops monitoring guy to get your host/service monitored with an assumed margin of humain erreur."
+Ops : "Get rid of adding a bunch of hosts generating alarm that blinks like a christmas tree, caused by montoring ghost hosts that dosen't exit yet or hosts in to be deployed status. "
+Wouldn't be simple to send in time, a JSON request once and notify the whole monitoring system to welcome warmly the fresh new deployed app, or remove magically the old one.
+
+Indeed, it could be nice and very efficient to send a JSON request to a system that register my new application, container or service. it's seem like a technology comming from space but it's not, at my current compagny Euronext, we build a system that makes the ops worklife easy by managing the monitoring infrastructure only and enjoying the autopilot mode.
+
+This simple request is enough to get you straightfroward to desired state :
+```json
+{
+ "use" : "linux-ssh",
+ "contact_groups": "admins",
+ "host_name" : "Mesos-Agent007",
+ "address" : "10.0.X.X",
+ "hostgroups" : "MESOS",
+  "_SSH_KEY" : ".ssh/id_rsa",
+  "_SSH_USER" : "bbiswatchingyou" 
+}
+```
+Once the rest api get the request, it's able to do the work and the magic happens:
+
+1 - Is this information correct ? :
+
+ "host_name" : "Mesos-Agent007",
+ "address" : "10.0.X.X"
+The api is smart enough to quickly decide wether this host could be registred or not by :
+
+Checking if the DNS registry is aware about this host
+Doing a simple ping to check if the host system is Up
+2 - Following the supervision template :
+
+you may notice the first line indicate to the monitoring system to pic the appropriate pattern to use :
+
+"use" : "linux-ssh",
+We did write a couple of template to cover the common monitoring use cases.
+
+The linux-ssh tells the API that this system is in Agentless mode (Thanks to Shinken (The nagios fork) , so SSH protocole is engouh to monitor, no need to install and configure an NRPE agent or collectD or a telegraph on the target system.
+
+Here again the system will process to the next level of tests. Testing the ssh connexion, if the sshd is not misconfigured or the ssh key is invalid, you'll got a nice error message from the API with a 471 HTTP code : expectation failed.
+
+3 - Adding the host/service :
+
+If the step 2 succeed, the host is associated with the described group, following the previous example :
+
+"hostgroups" : "MESOS"﻿
+a monitoring groupe called MESOS will be created (if not exist) and the new host is associated to.
+
+Conclusion : This solution responds to many use case mainly in a on growing environment, wether your looking for monitoring :
+- A big hadoop cluster that keep growing.
+- A set of ephemeral virtual machine, containers used for testing purpose Q&A.
+This solution is for you
+Hope this paper inspire you to improve your existing monitoring platform.
+
+Waiting for your feed back, please leave a comment.
+
 Requierements
 ================
 Probably a shinken installation would be benefit 
