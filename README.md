@@ -141,10 +141,10 @@ Adding a group of host to Shinken by a host range :
 ```bash
     curl https://MyAPI:5000/v3/hosts/search/HDP
 ```
-This command will add the groupe of host Hadopspark19[702-711]v-int to the shinken as follow : 
-Hadopspark19702v-int
-Hadopspark19703v-int
-Hadopspark19704v-int
+This command will add the groupe of host Hadopspark19[702-711]-int to the shinken as follow : 
+Hadopspark19702-int
+Hadopspark19703-int
+Hadopspark19704-int
 ...
 Hadopspark19711v-int
  
