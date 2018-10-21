@@ -3,7 +3,7 @@
  [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WX4EKLLLV49WG)
 
 
-Description : The purpose of this project is to build an intelligent monitoring / supervision  infrastructure  microservice based, able to handle the challenge of adding, plugging ad unplugging microservice and system in a cloud like environment
+Description : The purpose of this project is to build an intelligent monitoring / supervision  infrastructure  microservice based, able to handle the challenge of adding, plugging ad unplugging microservices and system in a cloud-like environment
 
  ![The Monitoring Stack as a Microservice](The_Monitoring_Stack_as_a_Microservice.jpg)
 
