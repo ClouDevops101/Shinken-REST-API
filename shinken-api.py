@@ -19,6 +19,13 @@ from flask import jsonify
 from flasgger import Swagger
 #from pymongo import MongoClient
 
+"""
+  This function will detect and ip range and return a list of ip :
+  ex : 10.0.0.1-10.0.0.3
+      10.0.0.1
+      10.0.0.2
+      10.0.0.3
+"""
 def ipRange(start_ip, end_ip):
    start = list(map(int, start_ip.split(".")))
    end = list(map(int, end_ip.split(".")))
@@ -36,6 +43,13 @@ def ipRange(start_ip, end_ip):
 
    return ip_range
 
+"""
+  This function will detect hosts  range and return a list of ip
+  ex : range web00[1-3]-dev 
+           web001
+           web002
+           web003
+"""
 def hostRange(hostrange):
     # dsdciits19[702-711]v-int
  p = re.compile('\[(.*)\]')
@@ -51,18 +65,27 @@ def hostRange(hostrange):
      start += 1
  return host_list
 
+"""
+  This function will check for the host ip from dns or local entries :
+  Same as lookup command
+"""
 def lookup_ip(addr):
    try:
        return socket.gethostbyaddr(addr)
    except socket.herror:
        return None, None, None
-
+"""
+  This function will check for the host from dns or local entries :
+  Same as lookup command
+"""
 def lookup_host(host):
    try:
        return socket.gethostbyname(host)
    except socket.gaierror:
        return None
-
+"""
+  This function will check if the host respond to ssh protocol
+"""
 def check_ssh(ip, user, key_file, initial_wait=0, interval=0, retries=1):
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -82,8 +105,6 @@ def check_ssh(ip, user, key_file, initial_wait=0, interval=0, retries=1):
 app = Flask(__name__)
 Swagger(app)
 
-
-# {"use" : "linux-ssh", "contact_groups": "admins", "host_name" : "dsdciits19701v-int", "address" : "172.27.87.186", "hostgroups" : "Shinken_Stack" , "_SSH_KEY" : "/home/shinken/.ssh/id_rsa", "_SSH_USER" : "aheddar" }"""
 
 
 @app.route('/<string:version>/shinken/<string:action>', methods=['GET'])
