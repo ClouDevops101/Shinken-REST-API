@@ -7,12 +7,12 @@ import time
 try: 
     import paramiko
 except:
-    print ("DryRun test only this module parmaiko is not installed")
+    print ("DryRun for test only this module : parmaiko is not installed")
 from flask.helpers import make_response
 try: 
     import dbus
 except:
-    print ("DryRun test only this module dbus does not exist on Windows")
+    print ("DryRun test Linux ,only this module dbus : does not exist on Windows")
 import random
 from flask import Flask, redirect, url_for, request, render_template
 from flask import jsonify
